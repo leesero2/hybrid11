@@ -1,0 +1,328 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>jQuery Mobile</title>
+
+	<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.4.5.min.css"/>
+	<script src="jquery.mobile/jquery-1.11.1.min.js"></script>
+	<script src="jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
+
+	<script src="cordova.js"></script>
+
+	<script type="text/javascript">
+	function formCheck() {
+		var checked_items = 0;
+			for (i = 0; i < document.user.elements.length; i++){
+				if (document.user.elements[i].name == "user_category" && document.user.elements[i].checked)
+					checked_items++;
+			}
+
+		if (checked_items == 0) {
+			window.alert('구분을 선택해주세요.');
+			document.user.user_category.focus();
+			return false;
+		}
+
+		if (!document.user.user_name.value) {
+			window.alert('이름을 입력해 주세요.');
+			document.user.user_name.focus();
+			return false;
+		}
+
+		if (!document.user.user_email.value) {
+			window.alert('이메일을 입력해 주세요.');
+			document.user.user_email.focus();
+			return false;
+		}
+
+		if (!document.user.user_content.value) {
+			window.alert('내용을 입력해 주세요.');
+			document.user.user_content.focus();
+			return false;
+		}
+
+		// if (!document.user.user_phone.value) {
+		// 	window.alert('전화번호를 입력해 주세요.');
+		// 	document.user.user_phone.focus();
+		// 	return false;
+		// }
+		//
+		// if (!document.user.user_email.value) {
+		// 	window.alert('이메일을 입력해 주세요.');
+		// 	document.user.user_email.focus();
+		// 	return false;
+		// }
+		//
+		// if (!document.user.user_pw.value) {
+		// 	window.alert('비밀번호를 입력해 주세요.');
+		// 	document.user.user_pw.focus();
+		// 	return false;
+		// }
+
+		user.submit();
+
+	};
+
+	// DB 입력실패로 리디렉션된 경우
+	function redirectionCheck() {
+		var result = '<?php echo $_POST['result']; ?>';
+		if (result == "fail")
+			window.alert('사용자 등록에 실패하였습니다. 잠시 후 다시 시도해 주세요.');
+		return false;
+	}
+	</script>
+<style>
+   li { list-style:none; }
+  .picture { list-style:none; padding:0; margin:0; }
+  .picture li { float:left; width:50%;}
+  .picture li a {display:block; margin:5px; border: 1px }
+  .picture li img { display:block; width:50%;  height:auto;}
+  .picture li img:hover { display:block; width:100%;  height:auto;}
+</style>
+</head>
+
+<body>
+<div data-theme="b">
+	<div data-role="page" id="home">
+		<div data-role="header" data-theme="b">
+			<h1>DIT</h1>
+		</div>
+		<div data-role="content" style="text-align:center">
+				<img src="dit.gif" >
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#intro">학교소개</a></li>
+				<li><a href="#movie" data-rel="dialog">학교영상</a></li>
+				<li><a href="#wizard3-1" data-rel="dialog">학교교가</a></li>
+				<li><a href="#gallery">학교사진</a></li>
+				<li><a href="#inquire">관리자에게 질문</a></li>
+				<li><a href="#notice">공지사항</a></li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>MADE BY LEE JI HOON</h1>
+		</div>
+	</div>
+
+	<div data-role="page" id="intro" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+			<h1>학교 소개</h1>
+		</div>
+		<div data-role="content">
+				<div  style="text-align:center">
+					<img src="dit.gif">
+				</div>
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>학교역혁</h3>
+					<p>1966년 10월 22일 이곳 부산진구 전포동 · 양정동 일원의 유서깊은 황령산 기슭 6만여 평의 부지에 '동의지천의 건학기념' 을 바탕으로 학교법인 동의학원을 설립하고 동의중학교, 동의공업고등학교를 운영하여오던 바, 미래 산업사회를 선도해 나갈 전문기술인의 효율적인 수급과 산업사회가 요구하는 전문직업인의 양서을 목적으로 1972년 12월 14일 동의전문학교의 설립인가를 얻어 창의, 성실, 협동을 학훈으로 1973년 3월에 개교하였다.</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>학교위치</h3>
+					<p>부산광역시 부산진구 양지로 54 동의과학대학교</p>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.6328894179546!2d129.07034361566684!3d35.16577526567449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568eca70d07d243%3A0xca0acf886f784030!2z64-Z7J2Y6rO87ZWZ64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1604382960344!5m2!1sko!2skr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				</div>
+				<div data-role="collapsible" >
+					<h3>설립이념</h3>
+					<p>동의는 새로운 도덕관, 바르고 참된 뜻을 펼치는 학문하는 곳이며, 지천은 군자가 걸어야 할 지상의 목표이다.</p>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>MADE BY LEE JI HOON</h1>
+		</div>
+	</div>
+
+
+
+
+
+	<div data-role="page" id="movie" data-theme="b">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>학교 영상</h1>
+		</div>
+		<div data-role="content" >
+			<div class="ui-bar ui-bar-e">학교 소개 동영상1</div><br/>
+			<li><iframe width="100%" height="240" src="dit1.mp4" type="video/mp4"></iframe></li><br/>
+			<div class="ui-bar ui-bar-e">학교 소개 동영상2</div><br/>
+			<li><video controls width="100%" preload="metadata">
+				<source src="dit2.mp4" type="video/mp4">
+			</video></li>
+		</div>
+		<div data-role="footer" data-theme="b">
+		</div>
+	</div>
+
+	<div data-role="page" id="wizard3-1">
+		<div data-role="header">
+			<h1>학교 교가</h1>
+		</div>
+		<!-- <div data-role="content"> -->
+			<!-- <div class="ui-bar ui-bar-e">홀로 아리랑</div><br/> -->
+			<a href="song.jpg" rel="external"><img src="song.jpg" /></a>
+			<!-- <audio controls width="100%" preload="metadata">
+				<source src="arirangalone.mp3" type="audio/mp3"> -->
+			<!-- </audio>
+			<img src="3-1.jpg" alt="" width="100%"> -->
+		</div>
+		<div data-role="footer">
+			<!-- <a href="#home"  data-direction="reverse">이전</a>
+			<a href="#wizard3-2" data-rel="dialog" data-transition="slide">다음</a> -->
+		</div>
+	<!-- </div> -->
+
+	<!-- <div data-role="page" id="wizard3-2">
+		<div data-role="header">
+			<h1>독도 노래2</h1>
+		</div>
+		<div data-role="content">
+			<div class="ui-bar ui-bar-e">독도는 우리땅</div><br/>
+			<audio controls width="100%" preload="metadata">
+				<source src="dockdo.mp3" type="audio/mp3">
+			</audio>
+			<img src="3-2.jpg" alt="" width="100%">
+		</div>
+		<div data-role="footer">
+			<a href="#wizard3-1"  data-direction="reverse">이전</a>
+			<a href="#home">처음</a>
+		</div>
+	</div> -->
+
+	<div data-role="page" id="gallery"  data-theme="b">
+		<div data-role="header" data-position="fixed"  data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+			<h1>DIT 갤러리</h1>
+		</div>
+		<div data-role="content">
+            <ul class="picture">
+				<li><a href="4-1.jpg" rel="external"><img src="4-1.jpg" /></a></li>
+				<li><a href="4-2.jpg" rel="external"><img src="4-2.jpg" /></a></li>
+				<li><a href="4-3.jpg" rel="external"><img src="4-3.jpg" /></a></li>
+				<li><a href="4-4.jpg" rel="external"><img src="4-4.jpg" /></a></li>
+				<li><a href="4-5.jpg" rel="external"><img src="4-5.jpg" /></a></li>
+				<li><a href="4-6.jpg" rel="external"><img src="4-6.jpg" /></a></li>
+				<!-- <li><a href="4-7.jpg" rel="external"><img src="4-7.jpg" /></a></li>
+				<li><a href="4-8.jpg" rel="external"><img src="4-8.jpg" /></a></li>
+				<li><a href="4-9.jpg" rel="external"><img src="4-9.jpg" /></a></li>
+				<li><a href="4-10.jpg" rel="external"><img src="4-10.jpg" /></a></li>
+				<li><a href="4-11.jpg" rel="external"><img src="4-11.jpg" /></a></li>
+				<li><a href="4-12.jpg" rel="external"><img src="4-12.jpg" /></a></li> -->
+            </ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>MADE BY LEE JI HOON</h1>
+		</div>
+	</div>
+	<div data-role="page" id="inquire" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+			<h1>질문</h1>
+		</div>
+		<div data-role="fieldcontain">
+
+			<div data-role="fieldcontain">
+
+				<!-- <form name="user" method="post" action="_01userInsert.php">
+					<table width="100%">
+						<tr>
+							<td><p>구분: </p></td>
+
+							<td>
+								<fieldset data-role="controlgroup" data-type="horizontal" class="ui-mini">
+									<input type="radio" name="user_category" id="radio1" value="생산직"  />
+									<label for="radio1">생산직</label>
+									<input type="radio" name="user_category" id="radio2" value="사무직"  />
+									<label for="radio2">사무직</label>
+									<input type="radio" name="user_category" id="radio3" value="임시직"  />
+									<label for="radio3">임시직</label>
+									<input type="radio" name="user_category" id="radio4" value="기타"  />
+									<label for="radio4">기타</label>
+								</fieldset>
+							</td>
+						</tr>
+					</table>
+
+					<input type="text" name="user_organization" id="user_organization" placeholder="소속을 입력해주세요."/>
+					<input type="text" name="user_rank" id="user_rank" placeholder="직급을 입력해주세요."/>
+					<input type="text" name="user_name" id="user_name" placeholder="성명을 입력해주세요."/>
+					<input type="text" name="user_phone" id="user_phone" placeholder="전화번호를 입력해주세요."/>
+					<input type="text" name="user_email" id="user_email" placeholder="이메일을 입력해주세요."/>
+					<input type="password" name="user_pw" id="user_pw" placeholder="비밀번호를 입력해주세요."/>
+				</form>
+			</div>
+
+			<!-- 입력버튼 -->
+			<!-- <button class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-r ui-btn-icon-right"
+				onclick="formCheck()">입력합니다.</button>  -->
+
+			 <form name="user" method="post" action="01userInsert.php">
+				<table width="100%">
+					<tr>
+						<td><p>구분: </p></td>
+
+						<td>
+							<fieldset data-role="controlgroup" data-type="horizontal" class="ui-mini">
+								<input type="radio" name="user_category" id="radio1" value="재학생"  />
+								<label for="radio1">재학생</label>
+								<input type="radio" name="user_category" id="radio2" value="입학생"  />
+								<label for="radio2">입학생</label>
+								<input type="radio" name="user_category" id="radio3" value="기타"  />
+								<label for="radio3">기타</label>
+							</fieldset>
+						</td>
+					</tr>
+				</table>
+				<!-- <input type="text" name="user_organization" id="user_organization" placeholder="소속을 입력해주세요."/>
+				<input type="text" name="user_email" id="user_email" placeholder="직급을 입력해주세요."/>
+				<input type="text" name="user_name" id="user_name" placeholder="성명을 입력해주세요."/>
+				<input type="text" name="user_content" id="user_content" placeholder="전화번호를 입력해주세요."/>
+				<input type="password" name="user_pw" id="user_pw" placeholder="비밀번호를 입력해주세요."/> -->
+				<input type="text" name="user_name" id="user_name" placeholder="이름을 입력해주세요."/>
+				<input type="text" name="user_email" id="user_email" placeholder="이메일을 입력해주세요."/>
+				<input type="text" name="user_content" id="user_content" placeholder="문의할 내용을 입력해주세요."/>
+			 </form>
+		</div>
+
+		<!-- 입력버튼 -->
+		 <button href="#home" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-r ui-btn-icon-right"
+			onclick="formCheck()" >입력합니다.</button>
+
+		<!-- <div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>MADE BY LEE JI HOON</h1>
+		</div> -->
+	</div>
+</div>
+
+<div data-role="page" id="notice" data-theme="b">
+	<div data-role="header" data-theme="b">
+		<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+		<h1>공지사항</h1>
+
+	</div>
+	<div data-role="content">
+
+			<div data-role="collapsible" data-collapsed="false">
+				<h3>공지사항</h3>
+				<?php
+	      $jb_conn = mysqli_connect("localhost", "huny10000","dlwlgns71008986!","huny10000");
+	      $jb_sql = "SELECT * FROM dit_notice LIMIT 5;";
+	      $jb_result = mysqli_query( $jb_conn, $jb_sql );
+	      while( $jb_row = mysqli_fetch_array( $jb_result ) ) {
+	        echo '<p>' . $jb_row[ 'notice' ] . '</p>';
+	      }
+	    ?>
+		</div>
+
+
+		</div>
+	</div>
+	<div data-role="footer" data-position="fixed" data-theme="b">
+		<h1>MADE BY LEE JI HOON</h1>
+	</div>
+</div>
+
+</body>
+</html>
